@@ -303,6 +303,10 @@ a {
         max-width: 100%;
     }
 
+    .presence-card {
+        min-height: 320px;
+    }
+
     .social-links {
         grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
         gap: 0.75rem;
@@ -378,6 +382,7 @@ a {
 
     .presence-card {
         gap: 0.75rem;
+        min-height: 280px;
     }
 
     .social-links {
