@@ -1,0 +1,196 @@
+<!-- stinky coders looking at this script go away nun ur of bussines oki? ;-; -->
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#15100f">
+<title>toxii_XD — DJ · Producer · Streamer</title>
+<meta name="description" content="toxii_XD (mako) — bass music producer, remixer and Twitch streamer from the Netherlands.">
+<meta property="og:title" content="toxii_XD">
+<meta property="og:description" content="Remixes, originals & live streams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Unbounded:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#15100f;--card:#21151d;--line:#31263b;--txt:#f1fdfd;--mute:#8ea4b8;--a:#00c3ff;--b:#ea00ff;--c:#f6dc8c}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font:400 1rem/1.6 'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+.pfpw{perspective:700px;margin-bottom:22px}
+.pfp{display:block;margin:0 auto;border-radius:50%;border:4px solid var(--a);box-shadow:0 20px 50px #0008;will-change:transform;max-width:44vw;height:auto}
+canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:#15100ff5;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font:900 1.1rem 'Unbounded';letter-spacing:.05em}
+.logo b{color:var(--a)}
+nav ul{display:flex;gap:24px;list-style:none;font-size:.9rem;color:var(--mute)}
+nav ul a:hover{color:var(--txt)}
+@media(max-width:640px){nav ul{gap:14px;overflow-x:auto;font-size:.8rem;white-space:nowrap}.logo{display:none}nav .wrap{gap:8px}.card{padding:18px}}
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:60px 0}
+.live{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:.8rem;color:var(--mute);background:var(--card)}
+.live i{width:8px;height:8px;border-radius:50%;background:#555}
+.live.on i{background:var(--c);animation:p 1.2s infinite}
+.live.on{color:var(--txt);border-color:var(--c)}
+@keyframes p{50%{opacity:.3}}
+h1{font:900 clamp(2rem,11vw,9rem)/1 'Unbounded';margin:22px 0 10px;letter-spacing:-.04em;color:var(--txt);text-shadow:3px 3px 0 var(--a),-3px -3px 0 var(--b);transition:text-shadow .2s}
+h1:hover{text-shadow:6px 0 0 var(--c),-6px 0 0 var(--b)}
+.tag{color:var(--mute);font-size:1.15rem}
+.eq{display:flex;gap:4px;justify-content:center;align-items:flex-end;height:46px;margin:30px 0}
+.eq span{width:6px;border-radius:3px;background:linear-gradient(var(--b),var(--a));animation:e 1s cubic-bezier(.45,0,.55,1) infinite alternate}
+@keyframes e{from{height:6px}to{height:46px}}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:12px 24px;border-radius:99px;font-weight:700;border:1px solid var(--line);background:var(--card);transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s}
+.btn:hover{transform:translateY(-3px);border-color:var(--a)}
+.btn.p{background:var(--a);color:#2a1a12c9;border:0}
+section{padding:80px 0;scroll-margin-top:60px}
+:focus-visible{outline:3px solid var(--b);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--a);color:#2a1a12;padding:10px 16px;border-radius:8px;font-weight:700;z-index:20}
+.skip:focus{top:10px}
+h2{font:900 clamp(1.6rem,4vw,2.4rem) 'Unbounded';margin-bottom:8px}
+h2 small{display:block;font:500 .8rem 'Space Grotesk';color:var(--b);letter-spacing:.3em;text-transform:uppercase;margin-bottom:6px}
+.sub{color:var(--mute);margin-bottom:32px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+#about .about{grid-template-columns:1fr}
+.gallery{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px}
+.gallery figure{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.gallery img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.gallery .wide{grid-column:span 2}
+.gallery .wide img{aspect-ratio:2 / 1}
+.gallery figcaption{padding:10px 14px;color:var(--mute);font-size:.82rem}
+@media(max-width:800px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.gallery{grid-template-columns:1fr}.gallery .wide{grid-column:auto}.gallery .wide img{aspect-ratio:1}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .45s cubic-bezier(.22,1,.36,1),border-color .3s}
+.card:hover{border-color:var(--a);transform:translateY(-4px)}
+.stat{font:900 clamp(1rem,4.4vw,2.2rem) 'Unbounded';color:var(--a)}
+.about .card{container-type:inline-size}
+.about .stat{font-size:min(2.2rem,13cqw)}
+.about{display:grid;gap:32px;grid-template-columns:1.3fr 1fr}
+@media(max-width:800px){.about{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:4px 14px;font-size:.85rem;color:var(--mute)}
+ol.top{list-style:none;counter-reset:n}
+ol.top li{counter-increment:n;display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-weight:500}
+ol.top li::before{content:counter(n,decimal-leading-zero);color:var(--a);font-family:'Unbounded';font-size:.8rem;padding-top:3px}
+iframe{width:100%;border:0;border-radius:14px}
+.soc a{display:flex;justify-content:space-between;align-items:center}
+.soc a::after{content:"↗"/"";color:var(--mute)}
+.soc em{font-style:normal;font-size:.8rem;color:var(--mute);display:block}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--mute);font-size:.85rem}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}canvas#bg{display:none}*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<nav aria-label="Main"><div class="wrap">
+  <a class="logo" href="index.html#top">toxii<b>_XD</b></a>
+  <ul><li><a href="index.html#about">About</a></li><li><a href="index.html#music">Music</a></li><li><a href="index.html#stream">Stream</a></li><li><a href="index.html#taste">Taste</a></li><li><a href="index.html#links">Links</a></li><li><a href="photos.html">Photos</a></li></ul>
+</div></nav>
+
+<main>
+<header class="hero" id="top"><div class="wrap">
+  <div class="pfpw"><img class="pfp" src="pfp.png" alt="toxii_XD avatar" width="180" height="180"></div>
+  <a id="live" class="live" href="https://www.twitch.tv/toxii_xd" target="_blank" rel="noopener"><i></i><span aria-live="polite">checking stream…</span></a>
+  <h1 data-t="toxii_XD">toxii_XD</h1>
+  <div class="eq" aria-hidden="true"></div>
+  <p> all the photos are down below </p>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <div class="about">
+    <div>
+      <h2><small>photos</small></h2>
+      <p class="sub">these are some of my favorite artworks and photos i have </p>
+      <div class="gallery">
+        <figure><img src="gallery_images/photo_2026-11-20_13-38-38.jpg" alt="VR selfie" loading="eager" decoding="async"><figcaption>snowpaw with the pansexual flag</figcaption></figure>
+        <figure class="wide"><img src="gallery_images/Untitled139_20261009115338.png" alt="Artwork" loading="eager" decoding="async"><figcaption>snowpaw and mako with some friends</figcaption></figure>
+        <figure><img src="gallery_images/photo_2026-11-20_13-33-49.jpg" alt="VR selfie" loading="eager" decoding="async"><figcaption>snowpaw looking buff</figcaption></figure>
+        <figure><img src="gallery_images/photo_2026-11-20_13-32-30.jpg" alt="VR selfie" loading="eager" decoding="async"><figcaption>snowpaw with one of his bfs</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2026-10-28_23-48-35.394_7680x4320.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — Oct 28, 2026</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2026-10-28_19-16-32.254_7680x4320.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — Oct 28, 2026</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2026-10-28_19-14-05.754_7680x4320.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — Oct 28, 2026</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2026-09-04_04-32-38.980_1920x1080.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — Sep 4, 2026</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2026-06-07_21-55-28.060_7680x4320.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — Jun 7, 2026</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2026-05-02_01-23-25.162_4320x7680.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — May 2, 2026</figcaption></figure>
+        <figure><img src="gallery_images/VRChat_2025-08-01_22-59-57.238_1920x1080.png" alt="VRChat screenshot" loading="eager" decoding="async"><figcaption>VRChat — Aug 1, 2025</figcaption></figure>
+        
+        <figure><img src="gallery_images/Untitled-2231.png" alt="Artwork" loading="eager" decoding="async"><figcaption>Endless horizon cover</figcaption></figure>
+        <figure><img src="gallery_images/u and i cover.png" alt="U and I cover artwork" loading="eager" decoding="async"><figcaption>U and I cover</figcaption></figure>
+        <figure><img src="gallery_images/Snowpawpfp 1.png" alt="Snowpaw profile artwork" loading="eager" decoding="async"><figcaption>Snowpaw profile</figcaption></figure>
+        <figure><img src="gallery_images/mafestival poster.png" alt="Mafestival poster" loading="eager" decoding="async"><figcaption>Mafestival poster</figcaption></figure>
+        <figure><img src="gallery_images/allthefurries.jpg" alt="All the Furries artwork" loading="eager" decoding="async"><figcaption>snowpaw with friends</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+
+
+</main>
+<footer>© <span id="y"></span> toxii_XD · made with bass 🔊 · made by the lovely fox Link_theFox</footer>
+
+<script>
+// equalizer bars
+const eq=document.querySelector('.eq');
+for(let i=0;i<32;i++){const s=document.createElement('span');s.style.animationDelay=(Math.random()*-1)+'s';s.style.animationDuration=(.5+Math.random()*.8)+'s';eq.append(s)}
+document.getElementById('y').textContent=new Date().getFullYear();
+// scroll reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.decode().catch(error=>console.error('Could not decode gallery image:',img.currentSrc,error));
+});
+// pfp follows the pointer, eased
+const pf=document.querySelector('.pfp'),hh=document.querySelector('h1');
+let tx=0,ty=0,px=0,py=0;
+addEventListener('pointermove',e=>{tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)(function m(){
+  px+=(tx-px)*.08;py+=(ty-py)*.08;
+  pf.style.transform=`translate(${px*40}px,${py*30}px) rotateY(${px*28}deg) rotateX(${-py*28}deg)`;
+  hh.style.transform=`translate(${-px*14}px,${-py*10}px)`;
+  requestAnimationFrame(m)})();
+// background: drifting waveform lines
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');let W,H;
+const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};rs();addEventListener('resize',rs);
+const cols=['#ff9a6c','#f6dc8c','#8fe9ee'];
+(function f(t){
+  cx.clearRect(0,0,W,H);
+  cols.forEach((c,k)=>{cx.beginPath();cx.strokeStyle=c;cx.globalAlpha=.35;cx.lineWidth=2;
+    for(let x=0;x<=W;x+=8){const y=H*.5+Math.sin(x*.006+t*.0008*(k+1)+k*2)*70*(1+k*.4)+Math.sin(x*.02+t*.002)*14;x?cx.lineTo(x,y):cx.moveTo(x,y)}
+    cx.stroke()});
+  requestAnimationFrame(f)})(0);
+// Discord presence via Lanyard (user must be in discord.gg/lanyard)
+const DID='748568720615669810',SC={online:'#3ba55d',idle:'#faa61a',dnd:'#ed4245',offline:'#747f8d'};
+function presence(d){
+  const $=id=>document.getElementById(id),u=d.discord_user,a=d.activities.find(x=>x.type!==4);
+  $('presence').hidden=false;
+  $('pa').src=`https://cdn.discordapp.com/avatars/${DID}/${u.avatar}.png?size=128`;
+  $('pn').textContent=u.global_name||u.username;
+  $('ps').style.background=SC[d.discord_status];
+  $('pt').textContent=d.discord_status;
+  $('pact').textContent=d.listening_to_spotify?`🎵 ${d.spotify.song} — ${d.spotify.artist}`:a?`${a.name}${a.details?' · '+a.details:''}`:'';
+}
+fetch('https://api.lanyard.rest/v1/users/'+DID).then(r=>r.json()).then(j=>j.success&&presence(j.data)).catch(()=>{});
+const ws=new WebSocket('wss://api.lanyard.rest/socket');
+ws.onmessage=e=>{const m=JSON.parse(e.data);
+  if(m.op===1){ws.send(JSON.stringify({op:2,d:{subscribe_to_id:DID}}));setInterval(()=>ws.readyState===1&&ws.send('{"op":3}'),m.d.heartbeat_interval)}
+  else if(m.op===0)presence(m.d)};
+// live status via public decapi (no key); falls back to offline
+fetch('https://decapi.me/twitch/uptime/toxii_xd').then(r=>r.text()).then(t=>{
+  const el=document.getElementById('live'),on=!/offline|not found|error/i.test(t);
+  el.classList.toggle('on',on);
+  const ls=document.getElementById('ls');ls.textContent=on?'LIVE':'OFFLINE';ls.style.color=on?'var(--c)':'var(--mute)';
+  document.getElementById('lt').textContent=on?'streaming on Twitch right now':'not streaming — follow for alerts';
+  el.querySelector('span').textContent=on?'LIVE NOW on Twitch — '+t:'Offline — follow for notifications';
+}).catch(()=>{document.querySelector('#live span').textContent='Watch on Twitch';document.getElementById('ls').textContent='Twitch'});
+</script>
+</body>
+</html>
+
+<!-- Made with ❤️ by the lovely Link_theFox — https://linkslair.xyz/ -->
